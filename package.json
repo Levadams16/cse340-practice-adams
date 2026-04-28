@@ -1,0 +1,10 @@
+{
+    "name": "cse340-practice-[lastname]",
+    "dependencies": {},
+    "devDependencies": {},
+    "type": "module",
+    "scripts": {
+        "dev": "node server.js",
+        "start": "node server.js"
+    }
+}

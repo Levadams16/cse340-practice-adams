@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { facultyListPage, facultyDetailPage } from './src/controllers/faculty/faculty.js';
 
 import express from 'express';
 
@@ -47,3 +48,6 @@ app.get("/student", (req, res) => {
 
   res.render("student", student);
 });
+
+app.get('/faculty', facultyListPage);
+app.get('/faculty/:facultyId', facultyDetailPage);

@@ -1,7 +1,9 @@
 {
     "name": "cse340-practice-[lastname]",
-    "dependencies": {},
-    "devDependencies": {},
+    "dependencies": {
+        "ejs": "^5.0.2",
+        "express": "^5.2.1"
+    },
     "type": "module",
     "scripts": {
         "dev": "node server.js",

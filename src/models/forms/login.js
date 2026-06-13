@@ -2,10 +2,20 @@ import bcrypt from 'bcrypt';
 import db from '../db.js';
 
 const findUserByEmail = async (email) => {
-    const result = await db.query(
-        'SELECT id, name, email, password, created_at FROM users WHERE LOWER(email) = LOWER($1) LIMIT 1',
-        [email]
-    );
+    const query = `
+        SELECT 
+            users.id, 
+            users.name, 
+            users.email, 
+            users.password, 
+            users.created_at,
+            roles.role_name AS "roleName"
+        FROM users
+        INNER JOIN roles ON users.role_id = roles.id
+        WHERE LOWER(users.email) = LOWER($1)
+        LIMIT 1
+    `;
+    const result = await db.query(query, [email]);
     return result.rows[0] || null;
 };
 

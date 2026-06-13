@@ -4,15 +4,13 @@ import { processLogout, showDashboard } from './forms/login.js';
 import { requireLogin } from '../middleware/auth.js';
 import contactRoutes from './forms/contact.js';
 import registrationRoutes from './forms/registration.js';
+import { facultyListPage, facultyDetailPage } from './faculty/faculty.js';
 
 const router = express.Router();
-
-import { facultyListPage, facultyDetailPage } from './faculty/faculty.js';
 
 router.get('/faculty', facultyListPage);
 router.get('/faculty/:facultyId', facultyDetailPage);
 
-// Add login-specific styles to all login routes
 router.use('/login', (req, res, next) => {
     res.addStyle('<link rel="stylesheet" href="/css/login.css">');
     next();
@@ -23,19 +21,12 @@ router.use('/register', (req, res, next) => {
     next();
 });
 
-// Login routes (form and submission)
 router.use('/login', loginRoutes);
-
 router.use('/contact', contactRoutes);
-
-// Registration routes
 router.use('/register', registrationRoutes);
 
-// Authentication-related routes at root level
 router.get('/logout', processLogout);
 router.get('/dashboard', requireLogin, showDashboard);
-
-export default router;
 
 router.get('/', (req, res) => {
     res.render('home', { title: 'Welcome Home' });
@@ -58,3 +49,5 @@ router.get('/student', (req, res) => {
     };
     res.render('student', student);
 });
+
+export default router;

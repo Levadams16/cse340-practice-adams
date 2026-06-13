@@ -28,11 +28,8 @@ app.use(session({
     store: new pgSession({
         conObject: {
             connectionString: process.env.DB_URL,
-            // Configure SSL for session store connection (required by BYU-I databases)
             ssl: {
-                ca: caCert,
-                rejectUnauthorized: true,
-                checkServerIdentity: () => { return undefined; }
+                rejectUnauthorized: false
             }
         },
         tableName: 'session',

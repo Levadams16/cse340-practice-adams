@@ -11,6 +11,11 @@
         <dt>Office</dt>      <dd><%= member.office %></dd>
         <dt>Phone</dt>       <dd><%= member.phone %></dd>
         <dt>Email</dt>       <dd><a href="mailto:<%= member.email %>"><%= member.email %></a></dd>
+        <img 
+            src="/images/faculty/<%= member.slug %>.jpg" 
+            alt="<%= member.name %>"
+            class="faculty-photo"
+        >
     </dl>
 </main>
 

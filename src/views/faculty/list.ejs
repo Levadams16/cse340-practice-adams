@@ -13,6 +13,11 @@
     <div class="faculty-grid">
         <% faculty.forEach(member => { %>
             <div class="faculty-card">
+                <img 
+                    src="/images/faculty/<%= member.slug %>.jpg" 
+                    alt="<%= member.name %>"
+                    class="faculty-photo"
+                >
                 <h2><a href="/faculty/<%= member.id %>"><%= member.name %></a></h2>
                 <p><strong>Department:</strong> <%= member.department %></p>
                 <p><strong>Title:</strong> <%= member.title %></p>
